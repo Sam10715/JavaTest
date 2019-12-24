@@ -20,6 +20,9 @@ public class MathClass {
     }
 
     public int sum(){
-      return   this.number1+this.number2;
+
+        System.out.println("Hello from Ahmad repo");
+
+        return   this.number1+this.number2;
     }
 }

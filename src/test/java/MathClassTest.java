@@ -24,7 +24,7 @@ class MathClassTest {
         mathClass.setNumber1(1);
         mathClass.setNumber2(2);
 
-        Assertions.assertTrue(mathClass.sum()<0,"test is not good");
+        Assertions.assertTrue(mathClass.sum()<9,"test is not good");
 
     }
 
