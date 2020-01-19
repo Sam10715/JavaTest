@@ -8,47 +8,14 @@ pipeline {
    
    
    
-   parameters {
-        string(name: 'branchName', defaultValue: 'master', description: 'which branch you want to checkout?')}
-    stages {
+   
+        stages{
        
         stage('Test') { 
             steps {
 			    checkout scm
 		
 		}}
+		}
 		
-		
-	stage("make snapshot ){
-	script {
-                    if (env.BRANCH_NAME == 'master') {
-                        
-			echo "test master"
-			commit= $GIT_COMMIT
-			
-                    } else {
-                        echo "test feature"
-                    }
-        
-        }
-	stage("make artifact in master case"){
-	script {
-                    if (env.BRANCH_NAME == 'master') {
-                        
-			
-			bat "git checkout ${env.commit}"
-			echo "deploy the artifcat"
-			
-                    } else {
-                        echo "is good"
-                    }
-        
-        }
-	
 	}
-	
-	}
-	
-	
-	
-    }
