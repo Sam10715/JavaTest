@@ -1,0 +1,33 @@
+pipeline {
+    agent any 
+    tools
+   {
+    maven 'Maven'
+    jdk 'JDK8'
+   }
+   
+   
+   
+   parameters {
+        string(name: 'branchName', defaultValue: 'master', description: 'which branch you want to checkout?')}
+    stages {
+       
+        stage('Test') { 
+            steps {
+			    checkout scm
+		
+		}}
+		
+		stage('git checkout branch') { 
+            steps {
+	    			echo "${params.branchName}"
+			  //  bat "git checkout --track origin/${params.branchName}" 
+			    bat "git branch"
+		
+		}
+		
+			  
+        }
+        
+        }
+    }
