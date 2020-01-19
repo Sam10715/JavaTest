@@ -18,16 +18,37 @@ pipeline {
 		
 		}}
 		
-		stage('git checkout branch') { 
-            steps {
-	    			echo "${params.branchName}"
-			  //  bat "git checkout --track origin/${params.branchName}" 
-			    bat "git branch"
 		
-		}
-		
-			  
-        }
+	stage("make snapshot ){
+	script {
+                    if (env.BRANCH_NAME == 'master') {
+                        
+			echo "test master"
+			commit= $GIT_COMMIT
+			
+                    } else {
+                        echo "test feature"
+                    }
         
         }
+	stage("make artifact in master case"){
+	script {
+                    if (env.BRANCH_NAME == 'master') {
+                        
+			
+			bat "git checkout ${env.commit}"
+			echo "deploy the artifcat"
+			
+                    } else {
+                        echo "is good"
+                    }
+        
+        }
+	
+	}
+	
+	}
+	
+	
+	
     }
